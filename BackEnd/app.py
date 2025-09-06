@@ -5,11 +5,13 @@ import joblib
 
 app = Flask(__name__)
 CORS(app)
-# model = joblib.load("X_G_Boost.jb") 
-model = joblib.load(r"d:\.aORG Study\Level 2\AIU NOW\Machine Learning [AIE121]\The project\ML Project\BackEnd\X_G_Boost.jb")
 
-# encoder = joblib.load("label_encoder.jb")
-encoder = joblib.load(r"d:\.aORG Study\Level 2\AIU NOW\Machine Learning [AIE121]\The project\ML Project\BackEnd\label_encoder.jb")
+
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = joblib.load(os.path.join(BASE_DIR, "X_G_Boost.jb"))
+encoder = joblib.load(os.path.join(BASE_DIR, "label_encoder.jb"))
+
 
 # print(encoder['category'].classes_)
 # print("Gender classes:", encoder['gender'].classes_)
